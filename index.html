@@ -257,9 +257,12 @@
 
   <script>
     const username = "Yogerasim";
-    const excludedRepos = new Set([
-      "practicum-ios-review",
-      "portfolio"
+    const allowedRepos = new Set([
+      "Lens",
+      "Trains",
+      "Tracker",
+      "ImageFeed",
+      "AutoCleaner"
     ]);
 
     async function loadRepos() {
@@ -271,7 +274,7 @@
 
         const filtered = repos
           .filter(repo => !repo.fork)
-          .filter(repo => !excludedRepos.has(repo.name))
+          .filter(repo => allowedRepos.has(repo.name))
           .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
         if (!filtered.length) {
