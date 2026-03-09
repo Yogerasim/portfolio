@@ -274,10 +274,19 @@
         const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
         const repos = await response.json();
 
-        const filtered = repos
-          .filter(repo => !repo.fork)
-          .filter(repo => allowedRepos.has(repo.name))
-          .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+        const repoOrder = [
+          "Trains",
+          "Lens",
+          "Tracker",
+          "ImageFeed",
+          "AutoCleaner-MemoryEngine",
+          "AutoCleaner"
+        ];
+
+        const filtered = repoOrder
+          .map(name => repos.find(repo => repo.name === name))
+          .filter(Boolean)
+          .filter(repo => !repo.fork);
 
         if (!filtered.length) {
           container.innerHTML = `<div class="loading">No public repositories found.</div>`;
