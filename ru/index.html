@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Филипп Герасимов — Портфолио</title>
+  <meta name="description" content="Portfolio of Philip Gerasimov, iOS Developer. Swift, SwiftUI, Concurrency, Metal.">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#111827;
+      --card:rgba(17,24,39,.88);
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --accent:#60a5fa;
+      --accent2:#38bdf8;
+      --border:#1f2937;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, #1e293b 0%, #0f172a 40%, #020617 100%);
+      line-height:1.6;
+    }
+
+    .wrap{
+      max-width:1080px;
+      margin:0 auto;
+      padding:56px 20px 80px;
+    }
+
+    .hero{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:36px;
+      box-shadow:0 24px 60px rgba(0,0,0,.35);
+      margin-bottom:28px;
+    }
+
+    .hero-top{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .avatar{
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      border:2px solid rgba(96,165,250,.35);
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      object-fit:cover;
+    }
+
+    .title{
+      flex:1;
+      min-width:260px;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(96,165,250,.12);
+      color:var(--accent);
+      border:1px solid rgba(96,165,250,.25);
+      font-size:14px;
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:clamp(36px,6vw,58px);
+      line-height:1.05;
+      color:#f8fafc;
+    }
+
+    .role{
+      font-size:22px;
+      font-weight:600;
+      color:var(--accent2);
+      margin-bottom:10px;
+    }
+
+    .stack{
+      color:var(--muted);
+      font-size:16px;
+      margin-bottom:20px;
+    }
+
+    .about{
+      margin-top:24px;
+      color:#dbeafe;
+      max-width:780px;
+      font-size:17px;
+    }
+
+    .highlights{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(148,163,184,.10);
+      border:1px solid rgba(148,163,184,.16);
+      color:#dbeafe;
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:.1px;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:14px;
+      background:rgba(96,165,250,.12);
+      border:1px solid rgba(96,165,250,.25);
+      color:#dbeafe;
+      text-decoration:none;
+      font-weight:600;
+      transition:.15s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      background:rgba(96,165,250,.2);
+      text-decoration:none;
+    }
+
+    .section{
+      margin-top:34px;
+    }
+
+    .section-title{
+      font-size:28px;
+      margin:0 0 14px;
+      color:#f8fafc;
+    }
+
+    .section-subtitle{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 12px 30px rgba(0,0,0,.22);
+      display:flex;
+      flex-direction:column;
+      min-height:220px;
+    }
+
+    .repo-name{
+      margin:0 0 10px;
+      font-size:21px;
+      color:#f8fafc;
+    }
+
+    .repo-desc{
+      color:var(--muted);
+      font-size:15px;
+      margin-bottom:16px;
+      flex:1;
+    }
+
+    .repo-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:13px;
+      color:#cbd5e1;
+      margin-bottom:16px;
+    }
+
+    .repo-link{
+      margin-top:auto;
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .repo-link:hover{
+      text-decoration:underline;
+    }
+
+    .footer{
+      margin-top:40px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .loading{
+      color:var(--muted);
+      font-size:16px;
+      padding:14px 0;
+    }
+
+    @media (max-width:640px){
+      .hero{padding:24px}
+      .actions{flex-direction:column}
+      .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="hero-top">
+        <img class="avatar" src="https://github.com/Yogerasim.png" alt="Philip Gerasimov avatar">
+        <div class="title">
+          <div class="badge">iOS Developer</div>
+          <h1>Philip Gerasimov</h1>
+          <div class="role">Swift / SwiftUI Developer</div>
+          <div class="stack">Swift • SwiftUI • Concurrency • Metal • Networking • MVVM</div>
+        </div>
+      </div>
+
+      <div class="about">
+        I build iOS apps and interactive products with a strong focus on architecture, performance and clean UI.
+        I’m especially interested in SwiftUI, graphics, camera-based apps, concurrency and product development from idea to release.
+      </div>
+
+      <div class="highlights">
+        <div class="pill">Swift / SwiftUI</div>
+        <div class="pill">UIKit / MVVM</div>
+        <div class="pill">Metal / AVFoundation</div>
+        <div class="pill">API / CoreData</div>
+        <div class="pill">Team Projects</div>
+        <div class="pill">Open to iOS Roles</div>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="https://www.linkedin.com/in/philip-gerasim-267a16283/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/Yogerasim" target="_blank" rel="noopener noreferrer">Projects</a>
+        <a class="btn" href="https://eto-digital.com/" target="_blank" rel="noopener noreferrer">Studio</a>
+        <a class="btn" href="https://t.me/philip_gerasim" target="_blank" rel="noopener noreferrer">Contact</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Projects</h2>
+      <div class="section-subtitle">
+        Selected public repositories from my GitHub profile.
+      </div>
+      <div id="projects" class="grid">
+        <div class="loading">Loading repositories…</div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © Philip Gerasimov • Portfolio
+    </div>
+  </div>
+
+  <script>
+    const username = "Yogerasim";
+    const allowedRepos = new Set([
+      "AutoCleaner-MemoryEngine",
+      "Lens",
+      "Trains",
+      "Tracker",
+      "ImageFeed",
+      "AutoCleaner"
+    ]);
+
+    async function loadRepos() {
+      const container = document.getElementById("projects");
+
+      try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+        const repos = await response.json();
+
+        const repoOrder = [
+          "Trains",
+          "Lens",
+          "Tracker",
+          "ImageFeed",
+          "AutoCleaner-MemoryEngine",
+          "AutoCleaner"
+        ];
+
+        const filtered = repoOrder
+          .map(name => repos.find(repo => repo.name === name))
+          .filter(Boolean)
+          .filter(repo => !repo.fork);
+
+        if (!filtered.length) {
+          container.innerHTML = `<div class="loading">No public repositories found.</div>`;
+          return;
+        }
+
+        container.innerHTML = filtered.map(repo => {
+          const description = repo.description ? repo.description : "No description provided.";
+          const language = repo.language ? repo.language : "—";
+          const stars = repo.stargazers_count ?? 0;
+          const updated = new Date(repo.updated_at).toLocaleDateString("en-GB");
+
+          return `
+            <article class="card">
+              <h3 class="repo-name">${repo.name}</h3>
+              <div class="repo-desc">${description}</div>
+              <div class="repo-meta">
+                <span>Language: ${language}</span>
+                <span>★ ${stars}</span>
+                <span>Updated: ${updated}</span>
+              </div>
+              <a class="repo-link" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+                Open repository →
+              </a>
+            </article>
+          `;
+        }).join("");
+      } catch (error) {
+        container.innerHTML = `<div class="loading">Failed to load repositories.</div>`;
+      }
+    }
+
+    loadRepos();
+  </script>
+</body>
+</html>
